@@ -29,9 +29,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     "rest_framework",
     "django_filters",
     "corsheaders",
+    'drf_spectacular',
 
     "apps.common",
     "apps.accounts",
@@ -147,6 +149,9 @@ REST_FRAMEWORK = {
         "rest_framework.pagination.PageNumberPagination"
     ),
     "PAGE_SIZE": 20,
+    "DEFAULT_SCHEMA_CLASS": (
+        "drf_spectacular.openapi.AutoSchema"
+    )
 }
 
 from datetime import timedelta
@@ -164,3 +169,13 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Restaurant POS API",
+    "DESCRIPTION": (
+        "API documentation for the Restaurant POS backend. "
+        "Supports Owner, Cashier, Kitchen, and Waiter roles."
+    ),
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+}
