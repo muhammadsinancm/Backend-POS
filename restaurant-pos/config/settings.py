@@ -79,7 +79,7 @@ ASGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('DB_NAME', 'restaurant_pos'),
         'USER': os.getenv('DB_USER', 'restaurant_user'),
         'PASSWORD': os.getenv('DB_PASSWORD', ''),
