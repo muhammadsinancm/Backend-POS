@@ -4,5 +4,6 @@ from .views import CurrentUserView, POSLoginView
 
 urlpatterns = [
     path('login/', POSLoginView.as_view(), name='pos-login'),
-    path('token/refresh/', TokenRefreshView.as_view(), name='token-refresh')
+    path('token/refresh/', TokenRefreshView.as_view(), name='token-refresh'),
+    path('me/', CurrentUserView.as_view(), name='current-user')
 ]
