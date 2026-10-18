@@ -1,5 +1,8 @@
 from django.urls import path
 from rest_framework_simplejwt.views import TokenRefreshView
-from .views
+from .views import CurrentUserView, POSLoginView
 
-urlpatterns = []
+urlpatterns = [
+    path('login/', POSLoginView.as_view(), name='pos-login'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token-refresh')
+]
