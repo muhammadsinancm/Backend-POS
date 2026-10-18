@@ -10,14 +10,10 @@ class MenuPermissionTestView(APIView):
     permission_classes = [IsOwnerOrReadOnly]
     
     def get(self, reqeust):
-        return Response({
-            "message": "You can view the menu."
-        })
+        return Response({"message": "You can view the menu."})
     
     def post(self, request):
-        return Response({
-            "message": "You can modify menu data."
-        })
+        return Response({"message": "You can modify menu data."})
         
 class CategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
