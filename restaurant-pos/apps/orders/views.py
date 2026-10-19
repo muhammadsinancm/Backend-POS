@@ -7,7 +7,7 @@ from rest_framework.exceptions import PermissionDenied, ValidationError
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from apps.common.permissions import IsOwner
+from apps.common.permissions import IsWaiter
 from apps.tables.models import Table
 from .models import Order, OrderItem
 from .serializers import OrderCreateSerializer, OrderSerializer
