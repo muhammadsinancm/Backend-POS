@@ -2,9 +2,11 @@ from django.db import models
 from django.core.validators import MinValueValidator
 
 class Table(models.Model):
-    FREE = "free", "Free"
-    OCCUPIED = "occupied", "Occupied"
-    BILLING = "billing", "Billing"
+    class Status(models.TextChoices):
+        
+       FREE = "free", "Free"
+       OCCUPIED = "occupied", "Occupied"
+       BILLING = "billing", "Billing"
 
     number = models.PositiveIntegerField(unique=True, validators=[MinValueValidator(1)])
     capacity = models.PositiveSmallIntegerField(validators=[MinValueValidator(1)])
