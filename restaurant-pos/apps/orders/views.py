@@ -7,7 +7,7 @@ from rest_framework.exceptions import PermissionDenied, ValidationError
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from apps.common.permission import IsWaiter
+from apps.common.permissions import IsOwner
 from apps.tables.models import Table
 from .models import Order, OrderItem
 from .serializers import OrderCreateSerializer, OrderSerializer
@@ -17,12 +17,7 @@ class OrderViewSet(viewsets.ModelViewSet):
     http_method_names = ["get", "post", "head", "options"]
     
     def get_queryset(self):
-        queryset = (
-            Order.objects
-            .select_related("table", "created_by")
-            .prefetch_related("items")
-        )
-
+        queryset = (Order.objects.select_related("table", "created_by").prefetch_related("items"))
         user = self.request.user
         
         if user.is_superuser or user.role in ["owner", "cashier"]:
